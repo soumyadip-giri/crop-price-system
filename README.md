@@ -152,7 +152,7 @@ MODEL_PATH must correctly point to the .pkl file you downloaded.
 
 Ensure MongoDB is running locally or update MONGO_URI to your Atlas cluster.
 
-✅ 4. Install Backend Dependencies
+- ✅ 4. Install Backend Dependencies
 
 Open a terminal in the project root and run:
 
@@ -162,7 +162,7 @@ pip install -r requirements.txt
 
 (Use a virtual environment if desired.)
 
-✅ 5. Run the Backend Server
+- ✅ 5. Run the Backend Server
 
 From the project root or backend/:
 python -m backend.app
@@ -178,7 +178,7 @@ By default the backend runs at:
 
 http://127.0.0.1:5000
 
-✅ 6. Run the Frontend
+- ✅ 6. Run the Frontend
 
 There are two options:
 
@@ -266,7 +266,7 @@ Remote: const API_BASE = "https://your-backend-url/api";
 Feel free to reuse components for learning and research with proper acknowledgement.
 
 
-# crop-price-system
+# crop-price-system - inshort overview to run the website locally
 
 ### Download model pkl file as mentioned
 
