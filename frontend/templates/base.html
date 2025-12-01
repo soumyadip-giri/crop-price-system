@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>{% block title %}Crop Price Advisor{% endblock %}</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/custom.css') }}">
+</head>
+<body class="min-h-screen bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950 text-slate-50">
+  <div class="min-h-screen flex flex-col">
+
+    <!-- Navbar -->
+    <nav class="border-b border-slate-800/80 bg-slate-950/65 backdrop-blur-1xl sticky top-0 z-30">
+      <div class="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
+        <a href="/" class="flex items-center gap-2">
+          <span class="w-8 h-8 rounded-2xl bg-emerald-500/20 border border-emerald-500/40 flex items-center justify-center text-emerald-400 text-lg">🌾</span>
+          <span class="font-semibold tracking-tight">KrishiSense</span>
+        </a>
+        <div class="flex gap-4 text-sm">
+          <a href="/dashboard" class="hover:text-emerald-300 transition-colors">Dashboard</a>
+          <a href="/about-model" class="hover:text-emerald-300 transition-colors">Model</a>
+          <a href="/login" class="hover:text-emerald-300 transition-colors" id="nav-login">Login</a>
+          <button class="hidden hover:text-emerald-300 transition-colors" id="nav-logout">Logout</button>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Main content -->
+    <main class="flex-1 px-4 py-6 md:py-8">
+      {% block content %}{% endblock %}
+    </main>
+
+    <!-- Optional footer -->
+    <!-- Footer -->
+    <footer class="border-t border-slate-800/70 bg-slate-950/90 mt-4">
+      <div class="max-w-7xl mx-auto px-4 py-6 grid md:grid-cols-4 gap-6 text-[11px] text-slate-400">
+        <!-- Brand -->
+        <div class="space-y-2">
+          <div class="flex items-center gap-2">
+            <span class="w-7 h-7 rounded-2xl bg-emerald-500/20 border border-emerald-500/40 flex items-center justify-center text-emerald-300 text-lg">🌾</span>
+            <span class="font-semibold text-slate-100">KrishiSense</span>
+          </div>
+          <p>
+            Academic prototype for data-driven crop price decision support for farmers in West Bengal.
+          </p>
+          <h4 class="text-slate-200 font-semibold mb-2">TEAM</h4>
+            <ul class="space-y-1">
+            <li>SOUMYADIP GIRI</li>
+            <li>ARITRA BOSE</li>
+            <li>PRIYANSHU JANA</li>
+            <li>ABIN BISWAS</li>
+            <li>PRIYANSHU SHEKAR PANDEY</li>
+          </ul>
+        </div>
+
+        <!-- Links -->
+        <div>
+          <h4 class="text-slate-200 font-semibold mb-2">Quick links</h4>
+          <ul class="space-y-1">
+            <li><a href="/dashboard" class="hover:text-emerald-300">Farmer Dashboard</a></li>
+            <li><a href="/about-model" class="hover:text-emerald-300">Model &amp; Architecture</a></li>
+            <li><a href="/login" class="hover:text-emerald-300">Login</a></li>
+            <li><a href="/register" class="hover:text-emerald-300">Create Account</a></li>
+          </ul>
+        </div>
+
+        <!-- Tech stack -->
+        <div>
+          <h4 class="text-slate-200 font-semibold mb-2">Tech stack</h4>
+          <ul class="space-y-1">
+            <li>Python Flask + REST APIs</li>
+            <li>MongoDB (prediction &amp; user logs)</li>
+            <li>scikit-learn, XGBoost, Pandas</li>
+            <li>HTML, Tailwind CSS, Vanilla JS</li>
+            <li>OpenWeather API (live weather)</li>
+          </ul>
+        </div>
+
+        
+
+        <!-- Contact -->
+        <div>
+          <h4 class="text-slate-200 font-semibold mb-2">Contact &amp; credits</h4>
+          <p>Built as a minor project for Final Year B.Tech CSE, Adamas University</p>
+          <p class="mt-1">
+            Email: <a href="mailto:youremail@example.com" class="hover:text-emerald-300">soumyadip.giri.pro@gmail.com</a>
+          </p>
+          <p class="mt-1">
+            Phone Number: <span class="italic text-slate-500">+91 7063291136</span>
+          </p>
+          <div class="flex gap-3 mt-2 text-slate-300">
+            <span class="inline-flex items-center gap-1">
+              <span class="text-sm">📍</span> West Bengal, India
+            </span>
+          </div>
+        </div>
+      </div>
+
+      
+
+      <div class="border-t border-slate-900/80">
+        <div class="max-w-7xl mx-auto px-4 py-3 text-[10px] text-slate-500 flex flex-col md:flex-row md:items-center md:justify-between gap-1">
+          <span>© 2025 KrishiSense (Academic Prototype)</span>
+          <span>Data-driven advisory for West Bengal farmers • Not for commercial trading decisions.</span>
+        </div>
+      </div>
+    </footer>
+
+  </div>
+
+  <!-- GLOBAL BACKGROUND VIDEO FOR ALL AUTH PAGES -->
+{% if video_bg %}
+<video
+  id="bg-video"
+  class="fixed inset-0 w-full h-full object-cover -z-20 opacity-50"
+  autoplay
+  muted
+  loop
+  playsinline
+  preload="auto">
+    <source src="{{ url_for('static', filename='video/farm_bg1.mp4') }}" type="video/mp4" />
+</video>
+
+<!-- Dark overlay -->
+  <div class="fixed inset-0 bg-gradient-to-b from-slate-950/50 via-slate-950/70 to-slate-950/70 backdrop-blur-[0.5px] -z-10"></div>
+
+<script>
+document.addEventListener("DOMContentLoaded", async () => {
+    const v = document.getElementById("bg-video");
+    if (!v) return;
+    const playVideo = () => v.play().catch(()=>{});
+    playVideo();
+    window.addEventListener("click", playVideo, {once:true});
+    window.addEventListener("scroll", playVideo, {once:true});
+});
+</script>
+{% endif %}
+
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>

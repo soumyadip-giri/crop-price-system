@@ -1,0 +1,351 @@
+{% extends "base.html" %}
+{% block title %}KrishiSense – Smart Crop Price & Weather Advisor{% endblock %}
+
+{% block content %}
+
+<!-- Smooth fade-in animation + footer fix -->
+<style>
+  .fade-in {
+    opacity: 0;
+    animation: fadeIn 1s ease forwards;
+  }
+  @keyframes fadeIn {
+    to { opacity: 1; }
+  }
+
+  .float {
+    animation: floatAnim 6s ease-in-out infinite;
+  }
+  @keyframes floatAnim {
+    0%   { transform: translateY(0); }
+    50%  { transform: translateY(-10px); }
+    100% { transform: translateY(0); }
+  }
+
+  /* 🔧 Make the global footer sit above video/overlay and be fully opaque */
+  footer {
+    position: relative;
+    z-index: 30;
+    background-color: #020617; /* slate-950 */
+  }
+</style>
+
+<!-- OUTER WRAPPER -->
+<div class="relative min-h-screen fade-in">
+
+  <!-- Background Video -->
+  <video
+    id="bg-video"
+    class="fixed inset-0 w-full h-full object-cover -z-10 opacity-90"
+    autoplay muted loop playsinline preload="auto">
+    <source src="{{ url_for('static', filename='video/farm_bg.mp4.mp4') }}" type="video/mp4" />
+  </video>
+
+  <!-- Dark gradient overlay -->
+  <div class="fixed inset-0 bg-gradient-to-b from-slate-950/20 via-slate-950/85 to-slate-950/90 backdrop-blur-[1px] -z-10"></div>
+
+  <!-- Floating glow -->
+  <div class="fixed right-10 top-20 w-40 h-40 bg-emerald-500/10 rounded-full blur-3xl float pointer-events-none"></div>
+
+  <!-- APP LAYER -->
+  <div class="relative z-10 flex flex-col min-h-screen">
+
+    <!-- MAIN CONTENT -->
+    <main class="flex-1 max-w-7xl w-full mx-auto px-4 py-8">
+
+      <!-- Hero Section -->
+      <section class="grid lg:grid-cols-[3fr_2fr] gap-10 items-center pt-4">
+
+        <!-- Left Section -->
+        <div class="space-y-6">
+          <div class="inline-flex items-center gap-2 px-3 py-1 bg-emerald-500/15 border border-emerald-400/40 rounded-full text-[11px] text-emerald-200 backdrop-blur-md">
+            <span class="inline-flex w-4 h-4 rounded-full bg-emerald-400 text-slate-900 text-[9px] items-center justify-center font-semibold">NEW</span>
+            Smart crop price &amp; weather advisor for West Bengal farmers
+          </div>
+
+          <h1 class="text-4xl md:text-5xl font-extrabold leading-tight">
+            Smart <span class="text-emerald-400">Crop Price</span> &amp;<br />
+            <span class="text-emerald-300">Weather Advisor</span>
+          </h1>
+
+          <p class="text-slate-200/90 max-w-xl text-base leading-relaxed">
+            Choose your crop, market, and date—our AI automatically uses live weather,
+            agro-climatic zones, and market trends to suggest the best selling strategy.
+          </p>
+
+          <div class="flex flex-wrap gap-4">
+            <a href="/dashboard"
+               class="px-7 py-3 rounded-2xl bg-emerald-500 text-slate-900 text-sm font-semibold
+                      shadow-lg shadow-emerald-500/40 hover:bg-emerald-400 hover:scale-[1.02]
+                      transition-all duration-200 backdrop-blur-md">
+              Open Farmer Dashboard ↗
+            </a>
+            <a href="/register"
+               class="px-7 py-3 rounded-2xl bg-slate-900/50 border border-slate-700/60 text-slate-100
+                      hover:border-emerald-300 hover:scale-[1.02] transition-all duration-200 backdrop-blur-md">
+              Create Account
+            </a>
+          </div>
+
+          <div class="flex flex-wrap gap-4 text-[12px] text-slate-300">
+            <div class="flex items-center gap-2">
+              <span class="w-4 h-4 rounded-full bg-emerald-500/20 border border-emerald-400/50 flex items-center justify-center text-[9px] text-emerald-300">✓</span>
+              No complex app – runs in browser on any device
+            </div>
+            <div class="flex items-center gap-2">
+              <span class="w-4 h-4 rounded-full bg-emerald-500/20 border border-emerald-400/50 flex items-center justify-center text-[9px] text-emerald-300">✓</span>
+              Academic project for West Bengal farmers
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Panel -->
+        <div class="relative">
+          <div class="absolute -inset-4 bg-emerald-500/20 blur-2xl rounded-3xl opacity-70 float"></div>
+          <div class="relative bg-slate-900/40 border border-emerald-500/30 rounded-3xl backdrop-blur-1xl p-6 shadow-xl shadow-emerald-500/30">
+            <div class="flex items-center justify-between mb-3">
+              <h2 class="text-lg font-semibold text-slate-100">Quick Prediction Preview</h2>
+              <span class="text-[12px] text-emerald-300 flex items-center gap-1">
+                <span class="w-2 h-2 bg-emerald-400 rounded-full animate-pulse"></span>
+                Live demo
+              </span>
+            </div>
+            <ul class="text-[12px] text-slate-200 space-y-2">
+              <li>• Live weather integration (OpenWeather)</li>
+              <li>• District-wise agro-zone awareness</li>
+              <li>• Next 3 days trend + advisory</li>
+              <li>• Secure prediction history</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- Stats Section -->
+      <section class="grid md:grid-cols-3 gap-6 mt-10">
+        <div class="p-6 bg-slate-900/40 rounded-2xl border border-slate-700/40 backdrop-blur-1xl shadow-lg hover:scale-[1.02] transition-all duration-200">
+          <p class="text-emerald-300 text-center text-xl font-bold">23</p>
+          <p class="text-center text-slate-300 text-sm">Districts of West Bengal modeled</p>
+        </div>
+
+        <div class="p-6 bg-slate-900/40 rounded-2xl border border-slate-700/40 backdrop-blur-1xl shadow-lg hover:scale-[1.02] transition-all duration-200">
+          <p class="text-emerald-300 text-center text-xl font-bold">10+</p>
+          <p class="text-center text-slate-300 text-sm">Major crops supported</p>
+        </div>
+
+        <div class="p-6 bg-slate-900/40 rounded-2xl border border-slate-700/40 backdrop-blur-1xl shadow-lg hover:scale-[1.02] transition-all duration-200">
+          <p class="text-emerald-300 text-center text-xl font-bold">2019–2025</p>
+          <p class="text-center text-slate-300 text-sm">Historical time horizon</p>
+        </div>
+      </section>
+
+      <!-- How it works Section -->
+      <section class="mt-12 mb-10">
+        <h3 class="text-xl font-semibold text-slate-100 mb-4">How KrishiSense works</h3>
+
+        <div class="grid md:grid-cols-3 gap-6">
+          <div class="bg-slate-900/40 border border-slate-700/50 rounded-2xl p-5 backdrop-blur-1xl">
+            <h4 class="text-emerald-300 text-sm font-bold mb-2">STEP 1</h4>
+            <p class="text-slate-200 text-sm">
+              Farmer logs in, selects crop &amp; market. GPS auto-detects nearest district (optional).
+            </p>
+          </div>
+
+          <div class="bg-slate-900/40 border border-slate-700/50 rounded-2xl p-5 backdrop-blur-1xl">
+            <h4 class="text-emerald-300 text-sm font-bold mb-2">STEP 2</h4>
+            <p class="text-slate-200 text-sm">
+              Backend fetches live weather, maps agro-zone, builds features, and predicts modal price using ML.
+            </p>
+          </div>
+
+          <div class="bg-slate-900/40 border border-slate-700/50 rounded-2xl p-5 backdrop-blur-1xl">
+            <h4 class="text-emerald-300 text-sm font-bold mb-2">STEP 3</h4>
+            <p class="text-slate-200 text-sm">
+              Farmer sees price range, trend arrow, best selling day suggestion, nearby market comparison &amp; heatmaps.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ========================= -->
+      <!--       MEET THE TEAM      -->
+      <!-- ========================= -->
+      <section id="team" class="mt-4 mb-8">
+        <div class="flex items-center justify-between mb-6">
+          <div>
+            <h3 class="text-xl md:text-2xl font-semibold text-slate-100">Meet The Team</h3>
+            <p class="text-sm text-slate-300/90">
+              Final year B.Tech CSE students behind KrishiSense.
+            </p>
+          </div>
+        </div>
+
+        <div class="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6">
+
+          <!-- CARD TEMPLATE:
+               Update image paths + hrefs with real URLs.
+          -->
+
+          <!-- Soumyadip -->
+          <article class="group bg-slate-950/75 border border-slate-700/60 rounded-2xl px-6 py-7 backdrop-blur-xl shadow-lg hover:border-emerald-400/80 hover:shadow-emerald-500/30 transition-all">
+            <div class="flex flex-col items-center text-center space-y-4">
+              <div class="relative w-24 h-24 rounded-full overflow-hidden border-2 border-emerald-400/80 shadow-lg shadow-emerald-500/40">
+                <img
+                  src="{{ url_for('static', filename='img/team/soumyadip.jpg') }}"
+                  alt="Soumyadip Giri"
+                  class="w-full h-full object-cover">
+              </div>
+              <div>
+                <h4 class="font-semibold text-slate-100 text-sm">Soumyadip Giri</h4>
+                <p class="text-[11px] text-emerald-300">ML , Backend Lead &amp; UI/UX</p>
+              </div>
+              <div class="flex gap-4 text-slate-300 text-lg">
+                <!-- LinkedIn -->
+                <a href="https://www.linkedin.com/in/soumyadip-giri--/" class="hover:text-emerald-300" aria-label="LinkedIn" target="_blank">
+                  <svg viewBox="0 0 24 24" class="w-5 h-5" fill="currentColor">
+                    <path d="M4.98 3.5C4.98 4.88 3.88 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1 4.98 2.12 4.98 3.5zM.32 8.48H4.7V24H.32V8.48zM8.34 8.48h4.18v2.11h.06c.58-1.1 2-2.26 4.11-2.26 4.4 0 5.21 2.9 5.21 6.67V24h-4.38v-7.7c0-1.84-.03-4.2-2.56-4.2-2.56 0-2.95 2-2.95 4.06V24H8.34V8.48z"/>
+                  </svg>
+                </a>
+                <!-- Instagram -->
+                <a href="https://www.instagram.com/soumyadip_giri__/" class="hover:text-pink-300" aria-label="Instagram" target="_blank">
+                  <svg viewBox="0 0 24 24" class="w-5 h-5" fill="currentColor">
+                    <path d="M7 2C4.243 2 2 4.243 2 7v10c0 2.757 2.243 5 5 5h10c2.757 0 5-2.243 5-5V7c0-2.757-2.243-5-5-5H7zm0 2h10c1.654 0 3 1.346 3 3v10c0 1.654-1.346 3-3 3H7c-1.654 0-3-1.346-3-3V7c0-1.654 1.346-3 3-3zm5 2.5A5.51 5.51 0 0 0 6.5 12 5.51 5.51 0 0 0 12 17.5 5.51 5.51 0 0 0 17.5 12 5.51 5.51 0 0 0 12 6.5zm0 2A3.5 3.5 0 1 1 8.5 12 3.504 3.504 0 0 1 12 8.5zm5.75-3.25a1.25 1.25 0 1 1-2.5 0 1.25 1.25 0 0 1 2.5 0z"/>
+                  </svg>
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Aritra -->
+          <article class="group bg-slate-950/75 border border-slate-700/60 rounded-2xl px-6 py-7 backdrop-blur-xl shadow-lg hover:border-emerald-400/80 hover:shadow-emerald-500/30 transition-all">
+            <div class="flex flex-col items-center text-center space-y-4">
+              <div class="relative w-24 h-24 rounded-full overflow-hidden border-2 border-emerald-400/80 shadow-lg shadow-emerald-500/40">
+                <img
+                  src="{{ url_for('static', filename='img/team/aritra.jpg') }}"
+                  alt="Aritra Bose"
+                  class="w-full h-full object-cover">
+              </div>
+              <div>
+                <h4 class="font-semibold text-slate-100 text-sm">Aritra Bose</h4>
+                <p class="text-[11px] text-emerald-300">Frontend &amp; ML</p>
+              </div>
+              <div class="flex gap-4 text-slate-300 text-lg">
+                <a href="https://www.linkedin.com/in/aritra-bose-b284a7253/" class="hover:text-emerald-300" aria-label="LinkedIn" target="_blank">
+                  <svg viewBox="0 0 24 24" class="w-5 h-5" fill="currentColor">
+                    <path d="M4.98 3.5C4.98 4.88 3.88 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1 4.98 2.12 4.98 3.5zM.32 8.48H4.7V24H.32V8.48zM8.34 8.48h4.18v2.11h.06c.58-1.1 2-2.26 4.11-2.26 4.4 0 5.21 2.9 5.21 6.67V24h-4.38v-7.7c0-1.84-.03-4.2-2.56-4.2-2.56 0-2.95 2-2.95 4.06V24H8.34V8.48z"/>
+                  </svg>
+                </a>
+                <a href="https://www.instagram.com/awwwwritra/" class="hover:text-pink-300" aria-label="Instagram" target="_blank"> 
+                  <svg viewBox="0 0 24 24" class="w-5 h-5" fill="currentColor">
+                    <path d="M7 2C4.243 2 2 4.243 2 7v10c0 2.757 2.243 5 5 5h10c2.757 0 5-2.243 5-5V7c0-2.757-2.243-5-5-5H7zm0 2h10c1.654 0 3 1.346 3 3v10c0 1.654-1.346 3-3 3H7c-1.654 0-3-1.346-3-3V7c0-1.654 1.346-3 3-3zm5 2.5A5.51 5.51 0 0 0 6.5 12 5.51 5.51 0 0 0 12 17.5 5.51 5.51 0 0 0 17.5 12 5.51 5.51 0 0 0 12 6.5zm0 2A3.5 3.5 0 1 1 8.5 12 3.504 3.504 0 0 1 12 8.5zm5.75-3.25a1.25 1.25 0 1 1-2.5 0 1.25 1.25 0 0 1 2.5 0z"/>
+                  </svg>
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Priyanshu Jana -->
+          <article class="group bg-slate-950/75 border border-slate-700/60 rounded-2xl px-6 py-7 backdrop-blur-xl shadow-lg hover:border-emerald-400/80 hover:shadow-emerald-500/30 transition-all">
+            <div class="flex flex-col items-center text-center space-y-4">
+              <div class="relative w-24 h-24 rounded-full overflow-hidden border-2 border-emerald-400/80 shadow-lg shadow-emerald-500/40">
+                <img
+                  src="{{ url_for('static', filename='img/team/priyanshu_jana.jpg') }}"
+                  alt="Priyanshu Jana"
+                  class="w-full h-full object-cover">
+              </div>
+              <div>
+                <h4 class="font-semibold text-slate-100 text-sm">Priyanshu Jana</h4>
+                <p class="text-[11px] text-emerald-300">Ml &amp; Data Analytics</p>
+              </div>
+              <div class="flex gap-4 text-slate-300 text-lg">
+                <a href="https://www.linkedin.com/in/priyanshu-jana-425844255/" class="hover:text-emerald-300" aria-label="LinkedIn" target="_blank">
+                  <svg viewBox="0 0 24 24" class="w-5 h-5" fill="currentColor">
+                    <path d="M4.98 3.5C4.98 4.88 3.88 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1 4.98 2.12 4.98 3.5zM.32 8.48H4.7V24H.32V8.48zM8.34 8.48h4.18v2.11h.06c.58-1.1 2-2.26 4.11-2.26 4.4 0 5.21 2.9 5.21 6.67V24h-4.38v-7.7c0-1.84-.03-4.2-2.56-4.2-2.56 0-2.95 2-2.95 4.06V24H8.34V8.48z"/>
+                  </svg>
+                </a>
+                <a href="https://www.instagram.com/__slayer_photography__/" class="hover:text-pink-300" aria-label="Instagram" target="_blank">
+                  <svg viewBox="0 0 24 24" class="w-5 h-5" fill="currentColor">
+                    <path d="M7 2C4.243 2 2 4.243 2 7v10c0 2.757 2.243 5 5 5h10c2.757 0 5-2.243 5-5V7c0-2.757-2.243-5-5-5H7zm0 2h10c1.654 0 3 1.346 3 3v10c0 1.654-1.346 3-3 3H7c-1.654 0-3-1.346-3-3V7c0-1.654 1.346-3 3-3zm5 2.5A5.51 5.51 0 0 0 6.5 12 5.51 5.51 0 0 0 12 17.5 5.51 5.51 0 0 0 17.5 12 5.51 5.51 0 0 0 12 6.5zm0 2A3.5 3.5 0 1 1 8.5 12 3.504 3.504 0 0 1 12 8.5zm5.75-3.25a1.25 1.25 0 1 1-2.5 0 1.25 1.25 0 0 1 2.5 0z"/>
+                  </svg>
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Abin -->
+          <article class="group bg-slate-950/75 border border-slate-700/60 rounded-2xl px-6 py-7 backdrop-blur-xl shadow-lg hover:border-emerald-400/80 hover:shadow-emerald-500/30 transition-all">
+            <div class="flex flex-col items-center text-center space-y-4">
+              <div class="relative w-24 h-24 rounded-full overflow-hidden border-2 border-emerald-400/80 shadow-lg shadow-emerald-500/40">
+                <img
+                  src="{{ url_for('static', filename='img/team/abin.jpg') }}"
+                  alt="Abin Biswas"
+                  class="w-full h-full object-cover">
+              </div>
+              <div>
+                <h4 class="font-semibold text-slate-100 text-sm">Abin Biswas</h4>
+                <p class="text-[11px] text-emerald-300">Testing &amp; Integration &amp; Docs</p>
+              </div>
+              <div class="flex gap-4 text-slate-300 text-lg">
+                <a href="https://www.linkedin.com/in/abin-biswas/" class="hover:text-emerald-300" aria-label="LinkedIn" target="_blank">
+                  <svg viewBox="0 0 24 24" class="w-5 h-5" fill="currentColor">
+                    <path d="M4.98 3.5C4.98 4.88 3.88 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1 4.98 2.12 4.98 3.5zM.32 8.48H4.7V24H.32V8.48zM8.34 8.48h4.18v2.11h.06c.58-1.1 2-2.26 4.11-2.26 4.4 0 5.21 2.9 5.21 6.67V24h-4.38v-7.7c0-1.84-.03-4.2-2.56-4.2-2.56 0-2.95 2-2.95 4.06V24H8.34V8.48z"/>
+                  </svg>
+                </a>
+                <a href="https://www.instagram.com/s_l_a_y_e_r__07_/" class="hover:text-pink-300" aria-label="Instagram" target="_blank">
+                  <svg viewBox="0 0 24 24" class="w-5 h-5" fill="currentColor">
+                    <path d="M7 2C4.243 2 2 4.243 2 7v10c0 2.757 2.243 5 5 5h10c2.757 0 5-2.243 5-5V7c0-2.757-2.243-5-5-5H7zm0 2h10c1.654 0 3 1.346 3 3v10c0 1.654-1.346 3-3 3H7c-1.654 0-3-1.346-3-3V7c0-1.654 1.346-3 3-3zm5 2.5A5.51 5.51 0 0 0 6.5 12 5.51 5.51 0 0 0 12 17.5 5.51 5.51 0 0 0 17.5 12 5.51 5.51 0 0 0 12 6.5zm0 2A3.5 3.5 0 1 1 8.5 12 3.504 3.504 0 0 1 12 8.5zm5.75-3.25a1.25 1.25 0 1 1-2.5 0 1.25 1.25 0 0 1 2.5 0z"/>
+                  </svg>
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Priyanshu Shekar Pandey -->
+          <article class="group bg-slate-950/75 border border-slate-700/60 rounded-2xl px-6 py-7 backdrop-blur-xl shadow-lg hover:border-emerald-400/80 hover:shadow-emerald-500/30 transition-all">
+            <div class="flex flex-col items-center text-center space-y-4">
+              <div class="relative w-24 h-24 rounded-full overflow-hidden border-2 border-emerald-400/80 shadow-lg shadow-emerald-500/40">
+                <img
+                  src="{{ url_for('static', filename='img/team/priyanshu_pandey.jpg') }}"
+                  alt="Priyanshu Shekar Pandey"
+                  class="w-full h-full object-cover">
+              </div>
+              <div>
+                <h4 class="font-semibold text-slate-100 text-sm">Priyanshu Shekar Pandey</h4>
+                <p class="text-[11px] text-emerald-300">Data Analytics &amp; Docs</p>
+              </div>
+              <div class="flex gap-4 text-slate-300 text-lg">
+                <a href="https://www.linkedin.com/in/psp01u/" class="hover:text-emerald-300" aria-label="LinkedIn" target="_blank">
+                  <svg viewBox="0 0 24 24" class="w-5 h-5" fill="currentColor">
+                    <path d="M4.98 3.5C4.98 4.88 3.88 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1 4.98 2.12 4.98 3.5zM.32 8.48H4.7V24H.32V8.48zM8.34 8.48h4.18v2.11h.06c.58-1.1 2-2.26 4.11-2.26 4.4 0 5.21 2.9 5.21 6.67V24h-4.38v-7.7c0-1.84-.03-4.2-2.56-4.2-2.56 0-2.95 2-2.95 4.06V24H8.34V8.48z"/>
+                  </svg>
+                </a>
+                <a href="#" class="hover:text-pink-300" aria-label="Instagram">
+                  <svg viewBox="0 0 24 24" class="w-5 h-5" fill="currentColor">
+                    <path d="M7 2C4.243 2 2 4.243 2 7v10c0 2.757 2.243 5 5 5h10c2.757 0 5-2.243 5-5V7c0-2.757-2.243-5-5-5H7zm0 2h10c1.654 0 3 1.346 3 3v10c0 1.654-1.346 3-3 3H7c-1.654 0-3-1.346-3-3V7c0-1.654 1.346-3 3-3zm5 2.5A5.51 5.51 0 0 0 6.5 12 5.51 5.51 0 0 0 12 17.5 5.51 5.51 0 0 0 17.5 12 5.51 5.51 0 0 0 12 6.5zm0 2A3.5 3.5 0 1 1 8.5 12 3.504 3.504 0 0 1 12 8.5zm5.75-3.25a1.25 1.25 0 1 1-2.5 0 1.25 1.25 0 0 1 2.5 0z"/>
+                  </svg>
+                </a>
+              </div>
+            </div>
+          </article>
+
+        </div>
+      </section>
+
+    </main>
+    <!-- Footer comes from base.html -->
+
+  </div> <!-- /app layer -->
+</div> <!-- /outer wrapper -->
+
+<!-- Autoplay Fix -->
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const v = document.getElementById("bg-video");
+  if (!v) return;
+  const playVideo = () => v.play().catch(() => {});
+  playVideo();
+  window.addEventListener("click", playVideo, { once: true });
+  window.addEventListener("scroll", playVideo, { once: true });
+});
+</script>
+
+{% endblock %}
