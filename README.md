@@ -7,7 +7,7 @@ Farmers simply select:
 - **Crop**
 - **Market / District**
 - **Intended selling date**
-- *(Optional)* Enable **GPS** for auto-detecting nearest market & weather
+- Enable **GPS** for auto-detecting nearest market & weather
 
 …and the system uses **machine learning**, **OpenWeather live data**, **historical price trends**, and **agro-zone intelligence** to give **actionable insights**, not just numbers.
 
