@@ -116,25 +116,20 @@ crop-price-system/
 └── README.md
 ```
 ### ⚙️ Local Setup Guide
-✅ 1. Clone the Repository
+- ✅ 1. Clone the Repository
 git clone <your_repo_url> KrishiSense
 cd KrishiSense
 
-✅ 2. Download the ML Model (.pkl)
-
+- ✅ 2. Download the ML Model (.pkl)
 Open the Google Drive link:
 https://drive.google.com/file/d/1XHA5rd3ScFLUdaz4BS6FYOirvwP7Ukhc/view?usp=sharing
-
 Download the file: crop_price_prediction_model_v6_date.pkl
 
 Place it inside:
-
 KrishiSense/backend/ml/crop_price_prediction_model_v6_date.pkl
-
-
 Make sure the file name matches exactly.
 
-✅ 3. Create and Configure .env
+- ✅ 3. Create and Configure .env
 
 Create a file called .env in the project root (same level as backend/ and frontend/):
 
@@ -170,7 +165,6 @@ pip install -r requirements.txt
 ✅ 5. Run the Backend Server
 
 From the project root or backend/:
-
 python -m backend.app
 
 
@@ -189,15 +183,13 @@ http://127.0.0.1:5000
 There are two options:
 
 Option A – Served by Flask (recommended)
-
 If templates are wired in Flask, just visit:
-
 http://127.0.0.1:5000
 
 Option B – Open HTML directly
 
 - Open the file in browser:
--- frontend/templates/index.html
+ frontend/templates/index.html
 
 
 (For API calls to work, ensure API_BASE in frontend/static/js/main.js points to your backend URL.)
@@ -207,19 +199,14 @@ Option B – Open HTML directly
 Weather may show “offline demo” if:
 
 OPENWEATHER_API_KEY is missing
-
 API key is invalid
-
 Your internet is down
-
 OpenWeather rate limit is exceeded
 
 ✅ Double-check:
 
 .env contains a valid OPENWEATHER_API_KEY
-
 Backend is restarted after editing .env
-
 Terminal logs show no weather errors
 
 \
@@ -263,19 +250,19 @@ Remote: const API_BASE = "https://your-backend-url/api";
 
 ### 👨‍💻 Contributors
 
-- Soumyadip Giri – ML, Backend, UI/UX
+- **Soumyadip Giri** – ML, Backend, UI/UX
 
-- Aritra Bose – Frontend, ML
+- **Aritra Bose** – Frontend, ML
 
-- Priyanshu Jana – Data Analytics
+- **Priyanshu Jana** – Data Analytics
 
-- Abin Biswas – Testing & Integration
+- **Abin Biswas** – Testing & Integration
 
-- Priyanshu Shekar Pandey – Analytics & Documentation
+- **Priyanshu Shekar Pandey** – Analytics & Documentation
 
 ### 📜 License
 
-Academic / non-commercial use only.
+**Academic / non-commercial use only.**
 Feel free to reuse components for learning and research with proper acknowledgement.
 
 
