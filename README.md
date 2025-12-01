@@ -196,9 +196,8 @@ http://127.0.0.1:5000
 
 Option B – Open HTML directly
 
-Open the file in browser:
-
-frontend/templates/index.html
+- Open the file in browser:
+-- frontend/templates/index.html
 
 
 (For API calls to work, ensure API_BASE in frontend/static/js/main.js points to your backend URL.)
@@ -264,15 +263,15 @@ Remote: const API_BASE = "https://your-backend-url/api";
 
 ### 👨‍💻 Contributors
 
-Soumyadip Giri – ML, Backend, UI/UX
+- Soumyadip Giri – ML, Backend, UI/UX
 
-Aritra Bose – Frontend, ML
+- Aritra Bose – Frontend, ML
 
-Priyanshu Jana – Data Analytics
+- Priyanshu Jana – Data Analytics
 
-Abin Biswas – Testing & Integration
+- Abin Biswas – Testing & Integration
 
-Priyanshu Shekar Pandey – Analytics & Documentation
+- Priyanshu Shekar Pandey – Analytics & Documentation
 
 ### 📜 License
 
