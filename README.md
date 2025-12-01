@@ -114,7 +114,7 @@ crop-price-system/
 │   │   │   └── team/          # Team images (optional)
 │   │   └── video/             # Demo / intro videos (optional)
 └── README.md
-
+```
 ⚙️ Local Setup Guide
 ✅ 1. Clone the Repository
 git clone <your_repo_url> KrishiSense
