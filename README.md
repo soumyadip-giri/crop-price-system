@@ -223,54 +223,7 @@ Backend is restarted after editing .env
 
 Terminal logs show no weather errors
 
-📡 Deployment (Optional)
-A) Deploy Backend (Render / Railway / Any VPS)
-
-Push code to GitHub.
-
-Create a new Web Service.
-
-Set Build command (example):
-
-pip install -r backend/requirements.txt
-
-
-Set Start command:
-
-python -m backend.app
-
-
-Configure environment variables in the dashboard:
-
-FLASK_SECRET_KEY
-
-JWT_SECRET
-
-OPENWEATHER_API_KEY
-
-MODEL_PATH (e.g., backend/ml/crop_price_prediction_model_v6_date.pkl)
-
-MONGO_URI & MONGO_DB
-
-Upload / mount the model .pkl file so the backend can access it.
-
-B) Deploy Frontend (Netlify / Vercel / GitHub Pages)
-
-The frontend is static:
-
-Set the publish directory to frontend/
-
-Use index.html as entry
-
-If routing is needed, add a redirect rule such as:
-
-/*  /index.html  200
-
-
-If backend is remote, in main.js set:
-
-const API_BASE = "https://your-backend-domain/api";
-
+\
 🧪 Troubleshooting
 ❌ Weather shows “offline demo”
 
@@ -329,7 +282,7 @@ Feel free to reuse components for learning and research with proper acknowledgem
 
 # crop-price-system
 
-# Download model pkl file as mentioned
+### Download model pkl file as mentioned
 
 model file : https://drive.google.com/file/d/1XHA5rd3ScFLUdaz4BS6FYOirvwP7Ukhc/view?usp=sharing
 1. Go to this google drive link
@@ -337,7 +290,7 @@ model file : https://drive.google.com/file/d/1XHA5rd3ScFLUdaz4BS6FYOirvwP7Ukhc/v
 3. In this 'ml' folder add the crop_price_prediction_model_v6_date.pkl 
 
 
-# After pkl file added to ml ,
+### After pkl file added to ml ,
 
 1.Open new terminal in vs code
 2. Install libraries by running the commands: pip install -r requirements.txt
