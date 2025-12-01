@@ -93,8 +93,8 @@ crop-price-system/
 │   │   ├── weather_service.py # OpenWeather API integration
 │   │   ├── model_service.py   # Load & run ML model
 │   │   ├── agro_service.py    # Agro-climatic advisory logic
-│   ├── auth/                  # Auth, JWT, user management
-│   ├── routes/                # API route definitions
+│   ├── auth_routes.py                  # Auth, JWT, user management
+│   ├── prediction_routes                # API route definitions
 │   ├── ml/
 │   │   └── crop_price_prediction_model_v6_date.pkl  # ML model file (added by user)
 │   └── utils/                 # Helpers, common utilities
