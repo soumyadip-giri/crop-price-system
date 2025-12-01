@@ -115,7 +115,7 @@ crop-price-system/
 │   │   └── video/             # Demo / intro videos (optional)
 └── README.md
 ```
-⚙️ Local Setup Guide
+### ⚙️ Local Setup Guide
 ✅ 1. Clone the Repository
 git clone <your_repo_url> KrishiSense
 cd KrishiSense
@@ -149,7 +149,7 @@ MONGO_URI=mongodb://127.0.0.1:27017
 MONGO_DB=krishisense
 
 
-🔴 Important:
+### 🔴 Important:
 
 OPENWEATHER_API_KEY must be a valid key from OpenWeather.
 
@@ -203,7 +203,7 @@ frontend/templates/index.html
 
 (For API calls to work, ensure API_BASE in frontend/static/js/main.js points to your backend URL.)
 
-🔑 OpenWeather Live Weather Setup
+### 🔑 OpenWeather Live Weather Setup
 
 Weather may show “offline demo” if:
 
@@ -224,7 +224,7 @@ Backend is restarted after editing .env
 Terminal logs show no weather errors
 
 \
-🧪 Troubleshooting
+### 🧪 Troubleshooting
 ❌ Weather shows “offline demo”
 
 Check .env → OPENWEATHER_API_KEY present and correct
@@ -258,11 +258,11 @@ Local: const API_BASE = "/api";
 
 Remote: const API_BASE = "https://your-backend-url/api";
 
-👨‍🏫 How to Explain in Viva (Short Summary)
+### 👨‍🏫 How to Explain in Viva (Short Summary)
 
 “KrishiSense is a real-time farmer decision support system for West Bengal. A farmer just selects crop, market, and date (optionally enabling GPS), and our Flask backend fetches live weather from OpenWeather, combines it with historical prices, agro-climatic zones, and economic indicators, and passes it through a trained RandomForest/XGBoost model. The system predicts modal price, suggests best selling day and market, stores history in MongoDB, and visualizes district-wise price heatmaps and trends through a clean Tailwind + JS frontend.”
 
-👨‍💻 Contributors
+### 👨‍💻 Contributors
 
 Soumyadip Giri – ML, Backend, UI/UX
 
@@ -274,7 +274,7 @@ Abin Biswas – Testing & Integration
 
 Priyanshu Shekar Pandey – Analytics & Documentation
 
-📜 License
+### 📜 License
 
 Academic / non-commercial use only.
 Feel free to reuse components for learning and research with proper acknowledgement.
